@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Codice condiviso con le altre applicazioni DYNATRON (BTS1/FOC6) -->
+  <Import Project="..\ComuniIntelsatIntersat1\ComuniIntelsatIntersat1.projitems" Label="Shared" />
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <MyType>WindowsForms</MyType>
+    <StartupObject>Effemeridi.My.MyApplication</StartupObject>
+    <RootNamespace>Effemeridi</RootNamespace>
+    <AssemblyName>Effemeridi</AssemblyName>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <Deterministic>true</Deterministic>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ProjectGuid>{ED4FBD3C-2B6C-4978-8119-BFB235530983}</ProjectGuid>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <!-- File del progetto condiviso non necessari: specifici del controllo/
+       tracking antenna reale (Calcolo11Par, Management ACU, Ricezione,
+       Acquire, Grafico beacon, ecc.) — Effemeridi usa solo il calcolo
+       effemeridi (frmEffemeridi) e i dialoghi satelliti/TLE, non ha una
+       vera frmRicezione (pannello antenna). -->
+  <ItemGroup>
+    <!-- FrmEffemeridi: copia privata (vedi FrmEffemeridi.vb in questo
+         progetto). La versione condivisa resta quella "passiva" (sola
+         visualizzazione) usata da BTS1/FOC6 — qui invece satellite/
+         antenna sono tendine interattive, comportamento specifico di
+         questa app che non deve propagarsi alle altre due. -->
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.Designer.vb" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.resx" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAcquire.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAcquire.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmGrafico.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmGrafico.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTabSat.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTabSat.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\Proiezione.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\Ricezione.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmOffset.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmOffset.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmPhase.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmPhase.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmProgram.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmProgram.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmRicevitore.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmRicevitore.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmSimulazione.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmSimulazione.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.Http.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.Designer.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAllarmi.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmAllarmi.Designer.vb" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmPreset.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAllarmi.resx" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTrackTable.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmStampaLog.vb" />
+    <Compile Remove="..\ComuniIntelsatIntersat1\frmStampaLog.Designer.vb" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAcquire.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\FrmTabSat.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmOffset.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmPhase.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmProgram.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmRicevitore.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmSimulazione.resx" />
+    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmStampaLog.resx" />
+  </ItemGroup>
+
+  <!-- Global VB.NET Imports -->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+
+  <!-- Framework references non incluse automaticamente nei progetti SDK net48 -->
+  <ItemGroup>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <!-- NuGet packages (stesse di BTS1/FOC6, richieste dal codice condiviso) -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Quartz" Version="3.18.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118.0" />
+  </ItemGroup>
+
+  <!-- DependentUpon per i file Designer -->
+  <ItemGroup>
+    <Compile Update="frmMain.Designer.vb"><DependentUpon>frmMain.vb</DependentUpon></Compile>
+    <Compile Update="Frm11Elementi.Designer.vb"><DependentUpon>Frm11Elementi.vb</DependentUpon></Compile>
+    <Compile Update="FrmEffemeridi.Designer.vb"><DependentUpon>FrmEffemeridi.vb</DependentUpon></Compile>
+    <Compile Update="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+
+  <!-- File My Project -->
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Update="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="Orbite.db" />
+    <None Include="SMOD1574.ini" />
+  </ItemGroup>
+
+  <!-- EmbeddedResource con DependentUpon -->
+  <ItemGroup>
+    <EmbeddedResource Update="frmMain.resx"><DependentUpon>frmMain.vb</DependentUpon></EmbeddedResource>
+    <EmbeddedResource Update="Frm11Elementi.resx"><DependentUpon>Frm11Elementi.vb</DependentUpon></EmbeddedResource>
+    <EmbeddedResource Update="FrmEffemeridi.resx"><DependentUpon>FrmEffemeridi.vb</DependentUpon></EmbeddedResource>
+    <EmbeddedResource Update="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
