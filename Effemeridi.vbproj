@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- Codice condiviso con le altre applicazioni DYNATRON (BTS1/FOC6) -->
-  <Import Project="..\ComuniIntelsatIntersat1\ComuniIntelsatIntersat1.projitems" Label="Shared" />
+  <!-- Progetto indipendente: NON importa ComuniIntelsatIntersat1. I file
+       comuni che servono sono copie private nella cartella Comuni\,
+       modificabili senza effetti su BTS1/FOC6 (e viceversa). -->
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -21,9 +22,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ProjectGuid>{ED4FBD3C-2B6C-4978-8119-BFB235530983}</ProjectGuid>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <!-- Costante per escludere dal codice condiviso le parti che dipendono
-         da form non incluse qui (es. Acquire/frmRicezione.CmdSTBY_Click). -->
-    <DefineConstants>$(DefineConstants),EFFEMERIDI=True</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,67 +40,6 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
-  <!-- File del progetto condiviso non necessari: specifici del controllo/
-       tracking antenna reale (Calcolo11Par, Management ACU, Ricezione,
-       Acquire, Grafico beacon, ecc.) — Effemeridi usa solo il calcolo
-       effemeridi (frmEffemeridi) e i dialoghi satelliti/TLE, non ha una
-       vera frmRicezione (pannello antenna). -->
-  <ItemGroup>
-    <!-- FrmEffemeridi: copia privata (vedi FrmEffemeridi.vb in questo
-         progetto). La versione condivisa resta quella "passiva" (sola
-         visualizzazione) usata da BTS1/FOC6 — qui invece satellite/
-         antenna sono tendine interattive, comportamento specifico di
-         questa app che non deve propagarsi alle altre due. -->
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.Designer.vb" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmEffemeridi.resx" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAcquire.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAcquire.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmGrafico.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmGrafico.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTabSat.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTabSat.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\Proiezione.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\Ricezione.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmOffset.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmOffset.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmPhase.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmPhase.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmProgram.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmProgram.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmRicevitore.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmRicevitore.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmSimulazione.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmSimulazione.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.Http.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmPreset.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.Designer.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAllarmi.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmAllarmi.Designer.vb" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmPreset.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAutoTrackBackPT.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAllarmi.resx" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\FrmTrackTable.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmStampaLog.vb" />
-    <Compile Remove="..\ComuniIntelsatIntersat1\frmStampaLog.Designer.vb" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmAcquire.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\FrmTabSat.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\FrmVisualAcquire.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmMemoryTrack.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmOffset.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmPhase.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmProgram.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmRicevitore.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmSimulazione.resx" />
-    <EmbeddedResource Remove="..\ComuniIntelsatIntersat1\frmStampaLog.resx" />
-  </ItemGroup>
 
   <!-- Global VB.NET Imports -->
   <ItemGroup>
