@@ -21,6 +21,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ProjectGuid>{ED4FBD3C-2B6C-4978-8119-BFB235530983}</ProjectGuid>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!-- Costante per escludere dal codice condiviso le parti che dipendono
+         da form non incluse qui (es. Acquire/frmRicezione.CmdSTBY_Click). -->
+    <DefineConstants>$(DefineConstants),EFFEMERIDI=True</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
