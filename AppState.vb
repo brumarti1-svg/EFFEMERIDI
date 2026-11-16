@@ -122,7 +122,7 @@ Public Module AppState
     Public Const PCS_FAIL As Integer = 3
     Public Const PCS_NOT_OP As Integer = 6
     Public Const PCS_NORMAL As Integer = 1
-    Public ReadOnly PCS_STOP_COL As System.Drawing.Color = System.Drawing.Color.Orange
+    Public ReadOnly PCS_STOP_COL As System.Drawing.Color = System.Drawing.Color.Yellow   ' VB6: vbYellow (non collegato)
 
     Public AzComandato As Double
     Public ElComandato As Double
@@ -132,7 +132,7 @@ Public Module AppState
 
     ' Alias costanti colore VB6
     Public ReadOnly vbRed As System.Drawing.Color = System.Drawing.Color.Red
-    Public ReadOnly vbGreen As System.Drawing.Color = System.Drawing.Color.LightGreen
+    Public ReadOnly vbGreen As System.Drawing.Color = System.Drawing.Color.Lime   ' vbGreen = RGB(0,255,0)
     Public ReadOnly vbYellow As System.Drawing.Color = System.Drawing.Color.Yellow
     Public ReadOnly vbBlue As System.Drawing.Color = System.Drawing.Color.Blue
 
